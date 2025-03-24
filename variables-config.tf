@@ -30,13 +30,13 @@ variable "config_description" {
 }
 
 variable "config_instance_memory_size_in_gbs" {
-  description = "Memory size in GB (Set to 0 for fixed shape)"
+  description = "Memory size in GB (Set to 0 for flexible shape)"
   type        = number
   default     = 0
 }
 
 variable "config_instance_ocpu_count" {
-  description = "CPU core count (Set to 0 for fixed shape)"
+  description = "CPU core count (Set to 0 for flexible shape)"
   type        = number
   default     = 0
 }
