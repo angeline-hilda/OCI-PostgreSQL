@@ -3,10 +3,15 @@ This OpenTofu/Terraform module provisions and configures OCI Database for Postgr
 
 ## Features
 - OCI PostgreSQL Deployment: Deploys a PostgreSQL database with customizable parameters.
-- Networking Setup: Configures a private subnet and security groups.
+  
+- Network Setup: Configures a private subnet and security groups.
+  
 - Automated Backups: Enables automatic daily backups.
+  
 - Custom Configuration: Fine-tunes database settings such as max_connections.
+  
 - Monitoring and Alerts: Sets up alarms for key performance metrics.
+  
 - User and Database Initialization: Creates users, roles, and necessary extensions.
 
 ## Prerequisites
