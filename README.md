@@ -52,7 +52,7 @@ To destroy the created resources, use:
 
 ```sh
 tofu destroy # or terraform destroy
-
+```
 ## Documentation
 - [OCI PostgreSQL](https://docs.oracle.com/en-us/iaas/Content/postgresql/overview.htm)
 - [OCI PostgreSQL custom configurations](https://docs.oracle.com/en-us/iaas/Content/postgresql/config.htm)
