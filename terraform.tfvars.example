@@ -1,0 +1,122 @@
+# general oci parameters
+
+api_fingerprint = 
+api_private_key_path = 
+
+home_region = 
+region = "ap-mumbai-1"
+tenancy_id = 
+user_id = 
+
+
+compartment_id = 
+
+############################### NETWORK CONFIGURATION FOR POSTGRESQL #####################################################################
+
+db_subnet_id = 
+is_reader_endpoint_enabled       = false
+nsg_ids                          = []
+primary_db_endpoint_private_ip   = null
+
+############################## POSTGRESQL DATABASE #########################################################
+db_system_db_version = 14
+db_system_display_name = "psql-terraform"
+db_system_shape = "PostgreSQL.VM.Standard.E4.Flex"
+db_system_instance_memory_size_in_gbs = 32
+db_system_instance_ocpu_count = 2
+db_system_instance_count = 3
+
+psql_iops_input = 75
+
+db_system_credentials_username = "admin"
+password_type = "PLAIN_TEXT"
+password = "Welcome123###"
+
+enable_read_replicas = false
+
+
+backup_start = "00:00"
+backup_kind = "DAILY"
+retention_days = 7
+
+
+backup_display_name     = "daily_backup"
+backup_description      = "Backup for PostgreSQL DB"
+backup_retention_period = 7
+maintenance_window_start = "SUN 02:00"
+
+
+
+
+
+####################### CONFIG  ############################################
+/*
+Creation of Custom configuration - customization of User variables
+Eg: Max_connetions = 500
+
+*/
+
+config_db_version = "15"
+config_display_name   = "prod-psql-config"
+config_shape          = "VM.Standard.E4.Flex"
+config_key     = "max_connections"
+overridden_config_value = "500"
+config_description    = "Production PostgreSQL configuration"
+config_instance_memory_size_in_gbs = 16
+config_instance_ocpu_count = 4
+config_is_flexible   = true
+
+
+
+
+############################ DB Custom #######################################
+
+databases     = ["xyz-db"]
+port = 5432
+host = "127.0.0.1"
+
+
+
+##################################################################################
+#                           MONITORING                                           #
+
+
+###########################  Notification #######################################
+
+notification_topic_name = "PostgreSQL_Alerts"
+notification_topic_description = "Topic for PostgreSQL Alerts"
+
+##########################  Subscription  ######################################
+
+endpoint = "angeline.hilda.w@oracle.com"
+protocol = "EMAIL"
+
+
+##########################  Alarms      #######################################
+#alarm_namespace for Postgresql is oci_postgresl
+#resourceType is OCI_OPTIMIZED_STORAGE
+
+# Refer this for other PostgreSQL Metrics: https://docs.oracle.com/en-us/iaas/Content/postgresql/metrics.htm
+
+# Eg:"CpuUtilization[1m]{resourceType=\"OCI_OPTIMIZED_STORAGE\",dbInstanceRole=\"PRIMARY\"}.percentile(0.9) > 5" 
+# The query computes the 90th percentile CPU utilization every 1 minute and trigeers alarm if the value exceeds 5% ( Test case)
+
+#alarm_pending_duration is set to  "PT5M"
+# So the Alarm is triggered if the CPU spike is above 5% over a period of 5 minutes
+
+#alarm_query = "CpuUtilization[1m]{resourceType=\"OCI_OPTIMIZED_STORAGE\",dbInstanceRole=\"PRIMARY\"}.percentile(0.9) > 5"
+
+alarm_namespace = "oci_postgresql"
+destinations =[<"oci-topic-id-ocid">]
+
+
+
+alarm_pending_duration = "PT1M"
+alarm_message_format = "ONS_OPTIMIZED"
+
+cpu_utilization_alarm_threshold = 60    
+db_connections_alarm_threshold = 100    #count
+write_latency_alarm_threshold = 200 #ms
+read_latency_alarm_threshold = 150  #ms
+used_storage_alarm_threshold = 80 #GB
+
