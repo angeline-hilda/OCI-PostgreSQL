@@ -11,9 +11,58 @@ user_id =
 
 compartment_id = 
 
+
+
+############################### Virtual Cloud Network #############################################################
+
+vcn1_vcn_display_name = "vcn1_VCN"
+vcn1_vcn_dns_label = "vcn1vcn"
+vcn1_vcn_cidr_block = ["10.0.0.0/16"]
+
+# Subnet Configurations
+public_subnet_cidr_block = "10.0.1.0/24"
+public_subnet_display_name = "PublicSubnet"
+#public_subnet_dns_label = "publicsubnet"
+
+db_subnet_cidr_block = "10.0.2.0/24"
+db_subnet_display_name = "DBSubnet"
+#db_subnet_dns_label = "dbsubnet"
+
+# Security List Configurations
+public_ingress_rules = [
+  { protocol = "6", source = "0.0.0.0/0", min = 22, max = 22 },   # SSH
+  { protocol = "6", source = "0.0.0.0/0", min = 80, max = 80 },   # HTTP
+  { protocol = "6", source = "0.0.0.0/0", min = 443, max = 443 }  # HTTPS
+]
+
+#public_egress_rules = ["0.0.0.0/0"] # Allow all outbound traffic
+
+db_ingress_rules = [
+  { protocol = "6", source = "10.0.1.0/24", min = 22, max = 22 },   # SSH from Public Subnet
+  { protocol = "6", source = "10.0.1.0/24", min = 3389, max = 3389 }, # RDP from Public Subnet
+  { protocol = "6", source = "10.0.1.0/24", min = 5432, max = 5432 }, # PostgreSQL
+  { protocol = "6", source = "10.0.1.0/24", min = 6379, max = 6379 }, # Redis
+  { protocol = "1", source = "0.0.0.0/0", icmp_type = 3, icmp_code = 4 } # ICMP Ping
+]
+
+#db_egress_rules = ["0.0.0.0/0"] # Allow all outbound traffic
+
+public_egress_rules = [
+  {
+    protocol    = "all"
+    destination = "0.0.0.0/0"
+  }
+]
+
+db_egress_rules = [
+  {
+    protocol    = "all"
+    destination = "0.0.0.0/0"
+  }
+]
+
 ############################### NETWORK CONFIGURATION FOR POSTGRESQL #####################################################################
 
-db_subnet_id = 
 is_reader_endpoint_enabled       = false
 nsg_ids                          = []
 primary_db_endpoint_private_ip   = null

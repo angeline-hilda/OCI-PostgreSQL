@@ -14,7 +14,7 @@ module "postgresql_db" {
   source         = "./postgresql/db_system"
   compartment_id = var.compartment_id
 
-  db_subnet_id                   = var.db_subnet_id
+  db_subnet_id                   = module.network.db_subnet_id
   is_reader_endpoint_enabled     = var.is_reader_endpoint_enabled
   nsg_ids                        = var.nsg_ids
   primary_db_endpoint_private_ip = var.primary_db_endpoint_private_ip
