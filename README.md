@@ -61,6 +61,7 @@ tofu destroy # or terraform destroy
 ## Documentation
 - [OCI PostgreSQL](https://docs.oracle.com/en-us/iaas/Content/postgresql/overview.htm)
 - [OCI PostgreSQL custom configurations](https://docs.oracle.com/en-us/iaas/Content/postgresql/config.htm)
+- [Supported Shapes](https://docs.oracle.com/en-us/iaas/Content/postgresql/supported-shapes.htm)
 - [OCI Monitoring](https://docs.oracle.com/en-us/iaas/Content/Monitoring/Concepts/monitoringoverview.htm)
 - [OCI Notifications](https://docs.oracle.com/en-us/iaas/Content/Notification/Concepts/notificationoverview.htm)
 - [OCI PostgreSQL Metrics](https://docs.oracle.com/en-us/iaas/Content/postgresql/metrics.htm)
