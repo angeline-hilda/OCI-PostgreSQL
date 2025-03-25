@@ -14,6 +14,12 @@ This OpenTofu/Terraform module provisions and configures OCI Database for Postgr
   
 - **User and Database Initialization**: Creates users, roles, and necessary extensions.
 
+## Configuration details
+- While creating PostgreSQL custom configurations:
+  - Fixed shapes require specifying the exact OCPU and memory values corresping to the selected shape.
+  - For flexible shapes, set the memory and OCPU values as 0 or skip them, as these resources are controlled dynamically at the ``` dbsystem ``` level. 
+  - In custom configuration creation, the shape has to be specified without the ```PostgresQL``` prefix (e.g., VM.```Standard.E4.Flex```). However, when creating a PostgreSQL database using this configuration, append ```PostgreSQL``` to the shape name (e.g., ```PostgreSQL..VM.Standard.E4.Flex``)
+
 ## Prerequisites
 Ensure you have the following before using this module:
 - [OpenTofu](https://opentofu.org/docs/intro/install/) or [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) installed
