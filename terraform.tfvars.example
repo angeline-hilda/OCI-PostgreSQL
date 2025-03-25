@@ -53,8 +53,13 @@ maintenance_window_start = "SUN 02:00"
 /*
 Creation of Custom configuration - customization of User variables
 Eg: Max_connetions = 500
-
 */
+
+# while creating PostgreSQL configuration, the shape must be specified wihtout the PostgrSQL prefix (e.g.,"VM.Standard.E4.Flex"). Append PostgreSQL to it ("PostgreSQL.VM.Standard.E4.Flex")
+# However, when creating a PostgreSWL database using this configuration, append PostgreSQL to the shape name (e.g., PostgreSQL.VM.Standard.E4.Flex).
+# For Fixed shapes requires specifyung exact memory and OCPU values 
+# For Flexible shapes, the memory and OCPU count is set to 0 or skipped. These are controlled dynamically at the dbsystem level. 
+
 
 config_db_version = "15"
 config_display_name   = "prod-psql-config"
@@ -62,8 +67,8 @@ config_shape          = "VM.Standard.E4.Flex"
 config_key     = "max_connections"
 overridden_config_value = "500"
 config_description    = "Production PostgreSQL configuration"
-config_instance_memory_size_in_gbs = 16
-config_instance_ocpu_count = 4
+config_instance_memory_size_in_gbs = 0
+config_instance_ocpu_count = 0
 config_is_flexible   = true
 
 
@@ -88,7 +93,7 @@ notification_topic_description = "Topic for PostgreSQL Alerts"
 
 ##########################  Subscription  ######################################
 
-endpoint = "angeline.hilda.w@oracle.com"
+endpoint = "angeline.hilda.w@xyz.com"
 protocol = "EMAIL"
 
 

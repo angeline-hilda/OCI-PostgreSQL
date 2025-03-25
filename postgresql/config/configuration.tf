@@ -17,6 +17,8 @@ resource "oci_psql_configuration" "this" {
   description                  = var.description
   instance_memory_size_in_gbs   = var.instance_memory_size_in_gbs
   instance_ocpu_count           = var.instance_ocpu_count
+
+  # REQUIRED
   is_flexible                   = var.is_flexible
   #defined_tags                  = var.defined_tags
   #freeform_tags                 = var.freeform_tags
