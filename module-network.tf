@@ -31,22 +31,3 @@ module "network" {
     oci.home_region = oci.home_region
   }
 }
-
-
-
-/*
-
-module "network" {
- # depends_on = [module.network_compartment]
-  source                            = "./modules/network"
-  compartment_ocid                  = var.compartment_id
-  vcn1_vcn_display_name              = var.vcn_display_name
-  public_subnet_cidr_block          = var.public_subnet_cidr_block
-  #api_subnet_cidr_block             = var.api_subnet_cidr_block
-  #node_subnet_cidr_block            = var.node_subnet_cidr_block
-  db_subnet_cidr_block              = var.db_subnet_cidr_block
-  providers = {
-    oci             = oci
-    oci.home_region = oci.home_region
-  }
-}*/
