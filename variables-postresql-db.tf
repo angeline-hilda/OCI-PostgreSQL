@@ -1,7 +1,10 @@
 
-variable "db_subnet_id" {
+
+/*variable "db_subnet_id" {
 
 }
+*/
+
 variable "is_reader_endpoint_enabled" { default = false }
 variable "nsg_ids" { default = [] }
 variable "primary_db_endpoint_private_ip" { default = null }
