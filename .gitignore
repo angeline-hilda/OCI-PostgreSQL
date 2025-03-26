@@ -6,6 +6,9 @@
 *.tfvars
 *.tfvars.txt
 *.txt
+terraform.tfvars
+.terraform.lock.hcl
+
 
 #commented txt file
 *.txt
