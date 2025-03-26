@@ -17,7 +17,7 @@ resource "oci_core_subnet" "public_subnet" {
   display_name   = var.public_subnet_display_name
   dns_label      =var.public_subnet_dns_label 
   prohibit_public_ip_on_vnic = false
-  route_table_id = oci_core_route_table.vcn1_public_route_table.id
+  #route_table_id = oci_core_route_table.vcn1_public_route_table.id
   security_list_ids = [oci_core_security_list.public_securitylist.id]
 }
 
@@ -58,6 +58,7 @@ resource "oci_core_service_gateway" "vcn1_service_gateway"{
 }
 
 #default route table
+/*
 resource "oci_core_route_table" "vcn1_public_route_table" {
  
   compartment_id = var.compartment_ocid
@@ -69,6 +70,16 @@ resource "oci_core_route_table" "vcn1_public_route_table" {
     destination_type = "CIDR_BLOCK"
     network_entity_id = oci_core_internet_gateway.vcn1_internet_gateway.id
   }
+}*/
+
+resource "oci_core_default_route_table" "vcn_default_route_table" {
+  manage_default_resource_id = oci_core_vcn.vcn1.default_route_table_id
+  route_rules {
+    network_entity_id = oci_core_internet_gateway.vcn1_internet_gateway.id
+    destination       = "0.0.0.0/0"
+    destination_type  = "CIDR_BLOCK"
+  }
+
 }
 
 #route table for private subnets
