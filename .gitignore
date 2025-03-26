@@ -16,7 +16,7 @@ terraform.tfvars
 # logs
 *.log
 
-# Directories
+# Directoriesdd 
 .terraform/
 .vagrant/
 

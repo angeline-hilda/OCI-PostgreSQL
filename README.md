@@ -25,6 +25,7 @@ This OpenTofu/Terraform module provisions and configures OCI Database for Postgr
 - After the provisioning of database, you may need to update the OCPU or memory based on the performance requirements. 
 - Flexible shapes are mapped with flexible configurations, allowing customization of OCUPS and memory. 
 - Fixed shapes have predefined OCPU and memory. If updating the fixed shape, the existing configuration can't be applied. You must either select an existing valid configuration or create a new configuration and pass it to the module.  
+- Series of the shape cannot be changed. (eg., StandardE4 to StandardE5)
 
 
 ## Prerequisites
