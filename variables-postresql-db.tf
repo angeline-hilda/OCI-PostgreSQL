@@ -39,13 +39,13 @@ variable "db_system_instance_count" {
 variable "db_system_instance_memory_size_in_gbs" {
   description = "RAM"
   type        = number
-  default     = 32 # example value
+  default     = 0 # example value
 }
 
 variable "db_system_instance_ocpu_count" {
   description = "OCPU count"
   type        = number
-  default     = 2 # example value
+  default     = 0 # example value
 }
 
 variable "psql_iops" {

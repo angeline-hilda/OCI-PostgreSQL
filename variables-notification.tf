@@ -1,10 +1,10 @@
 variable "notification_topic_description" {
-    description = "The description of the topic being created. Avoid entering confidential information."
-    type = string
+  description = "The description of the topic being created. Avoid entering confidential information."
+  type        = string
 }
 
 variable "notification_topic_name" {
-  
+
 }
 
 /*

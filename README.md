@@ -18,7 +18,14 @@ This OpenTofu/Terraform module provisions and configures OCI Database for Postgr
 - While creating PostgreSQL custom configurations:
   - Fixed shapes require specifying predefined OCPU and memory values corresponding to the selected shape.
   - For flexible shapes, set the memory and OCPU values as 0 or skip them, as these resources are controlled dynamically at the ``` dbsystem ``` level. 
-  - when defining the PostgreSQL configuration, specify the shape without the ```PostgresQL``` prefix (e.g., ```VM.Standard.E4.Flex```). However, when creating a PostgreSQL database using this configuration, append ```PostgreSQL``` to the shape name (e.g., ```PostgreSQL..VM.Standard.E4.Flex```).  
+  - when defining the PostgreSQL configuration, specify the shape without the ```PostgresQL``` prefix (e.g., ```VM.Standard.E4.Flex```). However, when creating a PostgreSQL database using this configuration, append ```PostgreSQL``` to the shape name (e.g., ```PostgreSQL..VM.Standard.E4.Flex```). 
+
+## Updating the Shape or Hardware Configuration of the DB system 
+
+- After the provisioning of database, you may need to update the OCPU or memory based on the performance requirements. 
+- Flexible shapes are mapped with flexible configurations, allowing customization of OCUPS and memory. 
+- Fixed shapes have predefined OCPU and memory. If updating the fixed shape, the existing configuration can't be applied. You must either select an existing valid configuration or create a new configuratopn and pass it to the module.  
+
 
 ## Prerequisites
 Ensure you have the following before using this module:
