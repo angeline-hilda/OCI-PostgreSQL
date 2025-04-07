@@ -82,6 +82,12 @@ password_type = "PLAIN_TEXT"
 password = "Welcome123###"
 
 enable_read_replicas = false
+replica_count = 0      # +1 for insertion, -1 for removal of replica nodes
+
+# use the attributes in the patch_operations block for insertion/removal of nodes from DB
+
+# for removal of replica node
+#db_node_id = 
 
 
 backup_start = "00:00"

@@ -37,7 +37,7 @@ module "postgresql_db" {
 
 
 
-  db_system_instance_count              = var.db_system_instance_count
+  db_system_instance_count              = var.db_system_instance_count + var.replica_count
   db_system_instance_ocpu_count         = var.db_system_instance_ocpu_count
   db_system_instance_memory_size_in_gbs = var.db_system_instance_memory_size_in_gbs
 

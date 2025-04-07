@@ -156,3 +156,7 @@ variable "enable_read_replicas" {
   type        = bool
   default     = false
 }
+
+variable "replica_count" {
+
+}
