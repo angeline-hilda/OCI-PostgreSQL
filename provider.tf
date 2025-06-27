@@ -25,10 +25,14 @@ provider "oci" {
   tenancy_ocid = var.tenancy_id
   user_ocid    = var.user_id
   region       = var.region
+  fingerprint = var.api_fingerprint
+  private_key_path = var.api_private_key_path
 }
 provider "oci" {
   alias        = "home_region"
   tenancy_ocid = var.tenancy_id
   user_ocid    = var.user_id
   region       = var.home_region
+  fingerprint = var.api_fingerprint
+  private_key_path = var.api_private_key_path
 }
