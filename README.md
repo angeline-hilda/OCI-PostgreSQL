@@ -20,12 +20,12 @@ This OpenTofu/Terraform module provisions and configures OCI Database for Postgr
   - For flexible shapes, set the memory and OCPU values as 0 or skip them, as these resources are controlled dynamically at the ``` dbsystem ``` level. 
   - when defining the PostgreSQL configuration, specify the shape without the ```PostgresQL``` prefix (e.g., ```VM.Standard.E4.Flex```). However, when creating a PostgreSQL database using this configuration, append ```PostgreSQL``` to the shape name (e.g., ```PostgreSQL..VM.Standard.E4.Flex```).
   - the attribute ```is_flexible``` is a required field. Set this to ```true/false``` accordingly. Do not set this to null. 
-- To enable extensions, 
+- To enable extensions, use the value ```oci.admin_enabled_extensions``` 
   ```hcl
   db_configuration_overrides {
     items {
-      config_key = "oci.admin_enabled_extensions"
-      overriden_config_value = "pglogical"                   # mention the OCI supported extension name here
+      config_key = "oci.admin_enabled_extensions"          
+      overriden_config_value = "pglogical"                 # mention the OCI supported extension name here
     }
   }
 
